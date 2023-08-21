@@ -29,15 +29,23 @@ export let renderHTML = (list) => {
     let { id, name, price, screen, backCamera, frontCamera, img, desc, type } =
       item;
     let contentTr = `
-      <tr>
-        <td>${id}</td>
-        <td>${name}</td>
-        <td>${price}</td>
-        <td><img src="${img}" alt=""></td>
-        <td>${desc}</td>
-      </tr>
+    <div class="col-4 mt-5">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${img}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text">${desc}</p>
+        </div>
+        <div class="card-body" style="display:flex">
+          <p class="card-text">Giá: ${price}</p>
+          <button class="btn btn-danger ml-5" style="width:100px">
+            <i class="fa fa-shopping-cart" style="color:white"></i>
+          </button>
+        </div>
+      </div>
+    </div>
     `;
     createHTML += contentTr;
   });
-  document.getElementById("tbody").innerHTML = createHTML;
+  document.getElementById("contents-items").innerHTML = createHTML;
 };

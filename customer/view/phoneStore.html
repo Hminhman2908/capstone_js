@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PhoneStore</title>
+    <title>Cyber Phone</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -22,17 +22,25 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <!-- FA -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- CSS PhoneStore -->
-    <link rel="stylesheet" href="../css/phoneStore.css" />
     <link rel="stylesheet" href="../../asset/css/spinner.css" />
+    <link rel="stylesheet" href="../css/phoneStore.css" />
   </head>
   <body style="position: relative">
-    <div id="spinner">
+    <!-- <div id="spinner">
       <div class="spinner-border text-success" role="status">
         <span class="sr-only">Loading...</span>
       </div>
-    </div>
-    <div class="backHome">
+    </div> -->
+    <!-- <div class="backHome">
       <button
         class="btn btn-danger"
         style="position: fixed; width: 100px; height: 60px; right: 0"
@@ -41,8 +49,8 @@
           >BACK</a
         >
       </button>
-    </div>
-    <div class="row">
+    </div> -->
+    <!-- <div class="row">
       <div class="container">
         <table class="table table-bordered">
           <thead>
@@ -57,6 +65,42 @@
           <tbody id="tbody"></tbody>
         </table>
       </div>
+    </div> -->
+    <div class="layout">
+      <header>
+        <div class="container">
+          <div class="row header__contents">
+            <div class="logo col-4" style="text-align: center">
+              <a href="#">
+                <i class="fa fa-robot"></i><br />
+                <span>Cyber Phone</span>
+              </a>
+            </div>
+            <div class="list col-8">
+              <nav>
+                <li>
+                  <a href="../../index.html">
+                    <i class="fa fa-home"></i><br />
+                    <span>Home</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-user-cog"></i><br />
+                    <span>Admin Portal</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-shopping-cart"></i><br />
+                    <span>Cart</span>
+                  </a>
+                </li>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -83,6 +127,6 @@
       referrerpolicy="no-referrer"
     ></script>
     <!-- my js -->
-    <script type="module" src="../../asset/js/main.js"></script>
+    <!-- <script type="module" src="../../asset/js/main.js"></script> -->
   </body>
 </html>

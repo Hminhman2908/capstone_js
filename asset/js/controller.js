@@ -29,18 +29,20 @@ export let renderHTML = (list) => {
     let { id, name, price, screen, backCamera, frontCamera, img, desc, type } =
       item;
     let contentTr = `
-    <div class="col-4 mt-5">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="${img}" alt="Card image cap">
+    <div class="col-6 col-md-4 col-xl-3 mb-2">
+      <div class="card" v-100">
+        <img class="card-img-top" src="${img}" alt="${name}">
         <div class="card-body">
-          <h5 class="card-title">${name}</h5>
-          <p class="card-text">${desc}</p>
+          <h6 class="card-title text-center">${name}</h6>
+          <p class="card-text text-danger text-center">${price}<sup><u>$</u></sup></p>
         </div>
-        <div class="card-body" style="display:flex">
-          <p class="card-text">Giá: ${price}</p>
-          <button class="btn btn-danger ml-5" style="width:100px">
-            <i class="fa fa-shopping-cart" style="color:white"></i>
-          </button>
+        <div class="text-right">
+            <a class="btn btn-sm btn-danger">
+                <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-sm btn-outline-primary" >
+                <i class="fa fa-book text-primary" aria-hidden="true"></i>
+            </a>
         </div>
       </div>
     </div>

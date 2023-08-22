@@ -1,5 +1,6 @@
 const URL = "https://64e380ccbac46e480e78e305.mockapi.io/product";
 
+var dssp = [];
 export let fetchProduct = () => {
   turnSpinner();
   axios({
@@ -9,6 +10,7 @@ export let fetchProduct = () => {
     .then((res) => {
       offSpinner();
       renderHTML(res.data);
+      dssp.push(res.data);
     })
     .catch((err) => {
       console.log(err);
@@ -40,7 +42,7 @@ export let renderHTML = (list) => {
             <a class="btn btn-sm btn-danger">
                 <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
             </a>
-            <a class="btn btn-sm btn-outline-primary" >
+            <a class="btn btn-sm btn-outline-primary" onclick="chiTietSanPham('${id}')">
                 <i class="fa fa-book text-primary" aria-hidden="true"></i>
             </a>
         </div>
@@ -51,3 +53,15 @@ export let renderHTML = (list) => {
   });
   document.getElementById("contents-items").innerHTML = createHTML;
 };
+
+// function chiTietSanPham(id) {
+//   let item = dssp.find((x) => x.id == id);
+//   modalTitle.innerHTML = item.name;
+//   let html = `
+//       <img src="${item.img}" class="img-fluid">
+//       <p class="text-danger text-center mt-2">Giá Bán: ${item.price}
+//       )} <sup><u>$</u></sup></p>
+//   `;
+//   modalBody.innerHTML = html;
+//   showModal.click();
+// }

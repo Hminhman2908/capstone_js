@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Cyber Phone</title>
+    <title>CyberPhone</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -30,6 +30,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Animation -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- CSS PhoneStore -->
     <link rel="stylesheet" href="../../asset/css/spinner.css" />
     <link rel="stylesheet" href="../css/phoneStore.css" />
@@ -37,25 +42,31 @@
 
   <body>
     <div id="spinner">
-      <div class="spinner-border text-success" role="status">
+      <div class="spinner-border text-spinner" role="status">
         <span class="sr-only">Loading...</span>
       </div>
     </div>
     <header>
-      <div class="container">
+      <div
+        class="container animate__animated animate__backInDown animate__delay-2s"
+      >
         <div class="row">
           <div class="col-4">
             <a href="../../index.html"
-              ><i class="fa fa-robot"></i>&nbsp;Cyber Phone</a
+              ><i class="fa fa-robot">&nbsp;&nbsp;Cyber Phone</i></a
             >
           </div>
           <div class="col-8">
             <nav class="navbar_contents">
               <li>
-                <a href="#"><i class="fa fa-user-cog"></i>&nbsp;Admin Portal</a>
+                <a href="#"
+                  ><i class="fa fa-user-cog">&nbsp;&nbsp;Admin Portal</i></a
+                >
               </li>
               <li>
-                <a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;Cart</a>
+                <a href="#"
+                  ><i class="fa fa-shopping-cart">&nbsp;&nbsp;Cart</i></a
+                >
               </li>
             </nav>
           </div>
@@ -63,23 +74,56 @@
       </div>
     </header>
     <div class="banner section-inner">
-      <style>
-        .banner {
-          background-image: linear-gradient(
-              to right,
-              rgb(251, 231, 239),
-              hsl(30deg 100% 1% / 20%)
-            ),
-            url(https://cdn.tgdd.vn/Files/2022/10/28/1481953/nen-mua-iphone-11-bao-nhieu-gb-6.jpg);
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: bottom;
-        }
-      </style>
+      <div id="carousel">
+        <div
+          class="bd-example animate__animated animate__backInLeft animate__delay-1s"
+        >
+          <div
+            id="carouselExampleCaptions"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleCaptions"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="../../asset/img/bg_SAMSUNG.jpeg"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../../asset/img/bg_IPHONE1.jpeg"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../../asset/img/bg_IPHONE2.jpeg"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="contents">
       <div class="contents_right mb-2">
-        <div class="text-right">
+        <div
+          class="text-right animate__animated animate__backInLeft animate__delay-3s"
+        >
           <select
             class="form-select formCheck"
             id="selectList"
@@ -90,7 +134,9 @@
             <option value="Samsung">Samsung</option>
           </select>
         </div>
-        <div class="form-search">
+        <div
+          class="form-search animate__animated animate__backInRight animate__delay-3s"
+        >
           <form class="search">
             <input
               type="search"

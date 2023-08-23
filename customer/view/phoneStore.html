@@ -1,71 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Cyber Phone</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <title>Cyber Phone</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- FA -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- CSS PhoneStore -->
+    <link rel="stylesheet" href="../../asset/css/spinner.css" />
+    <link rel="stylesheet" href="../css/phoneStore.css" />
+  </head>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <!-- FA -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- CSS PhoneStore -->
-  <link rel="stylesheet" href="../../asset/css/spinner.css" />
-  <link rel="stylesheet" href="../css/phoneStore.css" />
-</head>
-
-<body>
-  <div id="spinner">
-    <div class="spinner-border text-success" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-  <header>
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-          <a href="../../index.html"><i class="fa fa-robot"></i>&nbsp;Cyber Phone</a>
-        </div>
-        <div class="col-8">
-          <nav class="navbar_contents">
-            <li><a href="#"><i class="fa fa-user-cog"></i>&nbsp;Admin Portal</a></li>
-            <li><a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;Cart</a></li>
-          </nav>
-        </div>
+  <body>
+    <div id="spinner">
+      <div class="spinner-border text-success" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
-  </header>
-  <section class="banner"></section>
-  <section class="contents">
-    <div class="sortItems">
-      
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <a href="../../index.html"
+              ><i class="fa fa-robot"></i>&nbsp;Cyber Phone</a
+            >
+          </div>
+          <div class="col-8">
+            <nav class="navbar_contents">
+              <li>
+                <a href="#"><i class="fa fa-user-cog"></i>&nbsp;Admin Portal</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-shopping-cart"></i>&nbsp;Cart</a>
+              </li>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="banner section-inner">
+      <style>
+        .banner {
+          background-image: linear-gradient(
+              to right,
+              rgb(251, 231, 239),
+              hsl(30deg 100% 1% / 20%)
+            ),
+            url(https://cdn.tgdd.vn/Files/2022/10/28/1481953/nen-mua-iphone-11-bao-nhieu-gb-6.jpg);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: bottom;
+        }
+      </style>
     </div>
-    <div class="row p-1" id="contents-items"></div>
-  </section>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <!-- Axios -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
-    integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- my js -->
-  <script type="module" src="../../asset/js/main.js"></script>
-</body>
-
+    <div class="contents">
+      <div class="contents_right mb-2">
+        <div class="text-right">
+          <select
+            class="form-select formCheck"
+            id="selectList"
+            aria-label="Default select example"
+          >
+            <option value="all">All</option>
+            <option value="Apple">Apple</option>
+            <option value="Samsung">Samsung</option>
+          </select>
+        </div>
+        <div class="form-search">
+          <form class="search">
+            <input
+              type="search"
+              class="search-input"
+              placeholder="Search here..."
+            />
+            <span class="fa fa-search search_icon"></span>
+          </form>
+        </div>
+      </div>
+      <div class="row" id="contents-items"></div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Axios -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+      integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- my js -->
+    <script type="module" src="../../asset/js/main.js"></script>
+  </body>
 </html>

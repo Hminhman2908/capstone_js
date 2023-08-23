@@ -32,7 +32,7 @@ export let renderHTML = (list) => {
       item;
     let contentTr = `
     <div class="col-6 col-md-4 col-xl-3 mb-2">
-      <div class="card" v-100">
+      <div class="card">
         <img class="card-img-top" src="${img}" alt="${name}">
         <div class="card-body">
           <h6 class="card-title text-center">${name}</h6>

@@ -1,6 +1,7 @@
-const URL = "https://64e380ccbac46e480e78e305.mockapi.io/product";
+export let URL = "https://64e380ccbac46e480e78e305.mockapi.io/product";
 
 var dssp = [];
+
 export let fetchProduct = () => {
   turnSpinner();
   axios({
@@ -32,14 +33,14 @@ export let renderHTML = (list) => {
       item;
     let contentTr = `
       <div class="col-6 col-md-4 col-xl-3">
-        <div class="card animate__animated animate__backInUp animate__delay-3s">
+        <div class="card animate__animated animate__backInLeft animate__delay-1s">
           <img class="card-img-top" src="${img}" alt="${name}">
           <div class="card-body">
             <h6 class="card-title text-center">${name}</h6>
             <p class="card-text text-danger text-center">${price}<sup><u>$</u></sup></p>
           </div>
           <div class="text-right p-2">
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" onclick="addCart()">
                   <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
               </button>
               <button class="btn btn-outline-primary">
@@ -52,4 +53,24 @@ export let renderHTML = (list) => {
     createHTML += contentTr;
   });
   document.getElementById("contents-items").innerHTML = createHTML;
+};
+
+export let renderItemCart = (list) => {
+  let createTr = "";
+  list.forEach((item, index) => {
+    let { id, name, price, screen, backCamera, frontCamera, img, desc, type } =
+      item;
+    createTr += `
+        <tr>
+          <td><img src="${img}" alt="Not img"</td>
+          <td>${name}</td>
+          <td>0</td>
+          <td>${price}</td>
+          <td>
+            <button class='btn btn-danger'><i class="fi-trash"></i></button>
+          </td>
+        </tr>
+      `;
+  });
+  document.getElementById("tbodyItem").innerHTML = createTr;
 };

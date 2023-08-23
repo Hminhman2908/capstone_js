@@ -67,7 +67,9 @@
               </li>
               <li>
                 <a href="#" onclick="showCart()"
-                  ><i class="fa fa-shopping-cart">&nbsp;&nbsp;Cart</i></a
+                  ><i class="fa fa-shopping-cart"
+                    >&nbsp;<sup id="Th_Mua_hang">0</sup>&nbsp;&nbsp;Cart</i
+                  ></a
                 >
               </li>
             </nav>
@@ -124,7 +126,7 @@
     <div class="contents">
       <div class="contents_right mb-2">
         <div
-          class="text-right animate__animated animate__backInLeft animate__delay-3s"
+          class="text-right animate__animated animate__backInLeft animate__delay-2s"
         >
           <select
             class="form-select formCheck"
@@ -132,20 +134,24 @@
             aria-label="Default select example"
           >
             <option value="all">All</option>
-            <option value="Apple">Apple</option>
-            <option value="Samsung">Samsung</option>
+            <option value="Apple">APPLE</option>
+            <option value="Samsung">SAMSUNG</option>
           </select>
         </div>
         <div
-          class="form-search animate__animated animate__backInRight animate__delay-3s"
+          class="form-search animate__animated animate__backInRight animate__delay-2s"
         >
           <form class="search">
             <input
               type="search"
               class="search-input"
+              id="searchIP"
               placeholder="Search here..."
             />
-            <span class="fa fa-search search_icon"></span>
+            <span
+              class="fa fa-search search_icon"
+              onclick="searchList()"
+            ></span>
           </form>
         </div>
       </div>
@@ -270,15 +276,7 @@
                 <td>Xử lý</td>
               </tr>
             </thead>
-            <tbody id="tbodyItem">
-              <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-              </tr>
-            </tbody>
+            <tbody id="tbodyItem"></tbody>
           </table>
         </div>
         <div class="col-12 final">

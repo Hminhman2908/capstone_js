@@ -2,17 +2,23 @@ export let renderList = (list) => {
   var contentHTML = "";
   list.forEach((item) => {
     var rowHTML = `
-    <tr>
+    <tr class="item-row">
         <th class="item-id" scope="row">${item.id}</th>
         <td class="item-name">${item.name}</td>
-        <td class="item-price">${item.price}</td>
+        <td class="item-price">${item.price}$</td>
         <td class="item-img">
             <img src="${item.img}" alt="">
         </td>
         <td class="item-desc">${item.desc}</td>
-        <td>
-            <button class="btn btn-warning" onclick="editData(${item.id})" data-toggle="modal" data-target="#staticBackdrop"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
-            <button class="btn btn-danger" onclick="delData(${item.id})"><i class="fa-solid fa-trash"></i>Delete</button>
+        <td class="item-actions">
+            <button class="btn btn-outline-warning fix" onclick="editData(${item.id})" data-toggle="modal" data-target="#staticBackdrop"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+            <button class="btn btn-outline-danger del" onclick="delData(${item.id})"><i class="fa-solid fa-trash"></i>Delete</button>
+        </td>
+        <td class="item-actions2" onclick="toggleRowActive(this)">
+            <button class="btn btn-outline-purple show-detail">
+            <i class="fa-solid fa-caret-down"></i>
+            <i class="fa-solid fa-caret-up"></i>
+            </button>
         </td>
     </tr>`;
     contentHTML += rowHTML;
@@ -52,3 +58,4 @@ export let setActiveButton = (buttonId) => {
   document.getElementById("highToLowButton").classList.remove("active");
   document.getElementById(buttonId).classList.add("active");
 }
+

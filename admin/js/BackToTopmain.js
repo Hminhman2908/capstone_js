@@ -1,7 +1,7 @@
 (function(){
     // Back to Top - by CodyHouse.co
 	var backTop = document.getElementsByClassName('js-cd-top')[0],
-		offset = 300, // browser window scroll (in pixels) after which the "back to top" link is shown
+		offset = 0, // browser window scroll (in pixels) after which the "back to top" link is shown
 		offsetOpacity = 1200, //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
 		scrollDuration = 700,
 		scrolling = false;

@@ -1,7 +1,6 @@
 import { getFormInfo, renderList, showFormInfo, showSpinner, hideSpinner, setActiveButton } from "./controller.js";
 import { checkAllInPut, checkSearch, hideAlert } from "./validate.js";
 // https://64e380ccbac46e480e78e305.mockapi.io/product
-
 let url = "https://64e380ccbac46e480e78e305.mockapi.io/product";
 window.fetchList = () => {
   axios
@@ -119,6 +118,7 @@ window.sortLowtoHigh = () => {
       list.sort((a, b) => a.price - b.price);
       renderList(list);
       setActiveButton("lowToHighButton");
+      location.reload();
       hideSpinner();
     })
     .catch(function (err) {
@@ -135,6 +135,7 @@ window.sortHightoLow = () => {
       list.sort((a, b) => b.price - a.price);  // Sort by the 'price' property
       renderList(list);
       setActiveButton("highToLowButton");
+      location.reload();
       hideSpinner();
     })
     .catch(function (err) {
@@ -147,4 +148,15 @@ window.clearModalAlert = () => {
   hideAlert("alertPrice");
   hideAlert("alertImg");
   hideAlert("alertDesc");
+}
+window.toggleRowActive = (button) => {
+  const itemRow = button.closest('.item-row');
+  const isActive = itemRow.classList.contains('active');
+
+  const allItemRows = document.querySelectorAll('.item-row');
+  allItemRows.forEach(row => row.classList.remove('active'));
+
+  if (!isActive) {
+    itemRow.classList.add('active');
+  }
 }

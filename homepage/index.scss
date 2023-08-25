@@ -19,7 +19,7 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.575);
-    padding: 50px;
+    padding: 30px;
     border-radius: 20px;
 }
 
@@ -41,19 +41,31 @@ img {
         color: black;
         font-size: 30px;
         font-weight: 700;
+        display: block;
     }
 }
-@media (max-width: 767.98px) { 
-    .content{
+
+@media (max-width: 767.98px) {
+    .content {
         padding: 20px;
+        width: 90vw;
     }
-    h1{
-        font-size: 2rem;
+
+    h1 {
+        font-size: 1.8rem;
     }
-    .item-content{
+
+    .item {
+        width: fit-content;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .item-content {
         flex-direction: column;
     }
-img{
-    width: 80%;
+
+    img {
+        width: 70%;
+    }
 }
- }

@@ -32,6 +32,7 @@ img {
     transition: all 0.5s;
     cursor: pointer;
 
+
     &:hover {
         transform: scale(1.1);
     }
@@ -41,5 +42,24 @@ img {
         color: black;
         font-size: 30px;
         font-weight: 700;
+    }
+}
+
+@media (max-width: 767.98px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .item-content {
+        flex-direction: column;
+
+    }
+
+    img {
+        width: 80%;
     }
 }

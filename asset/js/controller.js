@@ -16,10 +16,29 @@ export let fetchProduct = () => {
     .catch((err) => {
       console.log(err);
     });
+  renderTotalItemCart();
 };
 
 export function turnSpinner() {
   document.getElementById("spinner").style.display = "flex";
+}
+
+export function totalPrice() {
+  const listCart = window.localStorage.getItem("listCart");
+  const totalItemInCart = listCart ? JSON.parse(listCart) : [];
+  const totalPrice = totalItemInCart.reduce(
+    (prev, curr) => prev + curr.price,
+    0
+  );
+
+  document.getElementById("total").innerText = totalPrice;
+}
+
+export function renderTotalItemCart() {
+  const listCart = window.localStorage.getItem("listCart");
+
+  const totalItemInCart = listCart ? JSON.parse(listCart).length : 0;
+  document.getElementById("Th_Mua_hang").innerText = totalItemInCart;
 }
 
 export function offSpinner() {
@@ -32,7 +51,7 @@ export let renderHTML = (list) => {
     let { id, name, price, screen, backCamera, frontCamera, img, desc, type } =
       item;
     let contentTr = `
-      <div class="col-6 col-md-4 col-xl-3">
+      <div class="col-12 col-sm-6 col-md-4 col-xl-3">
         <div class="card animate__animated animate__backInLeft animate__delay-1s">
           <img class="card-img-top" src="${img}" alt="${name}">
           <div class="card-body">
@@ -40,7 +59,7 @@ export let renderHTML = (list) => {
             <p class="card-text text-danger text-center">${price}<sup><u>$</u></sup></p>
           </div>
           <div class="text-right p-2">
-              <button class="btn btn-danger" onclick="addCart()">
+              <button class="btn btn-danger" onclick="addCart(${id})">
                   <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
               </button>
               <button class="btn btn-outline-primary">
@@ -56,18 +75,40 @@ export let renderHTML = (list) => {
 };
 
 export let renderItemCart = (list) => {
+  let listCart = [];
   let createTr = "";
-  list.forEach((item, index) => {
-    let { id, name, price, screen, backCamera, frontCamera, img, desc, type } =
-      item;
+
+  list.forEach((element) => {
+    const itemInCart = listCart.find((e) => e.id === element.id);
+    if (itemInCart) {
+      itemInCart.quantity += 1;
+    } else {
+      element.quantity = 1;
+      listCart.push(element);
+    }
+  });
+
+  listCart.forEach((item, index) => {
+    let {
+      id,
+      name,
+      price,
+      screen,
+      backCamera,
+      frontCamera,
+      img,
+      desc,
+      type,
+      quantity,
+    } = item;
     createTr += `
         <tr>
-          <td><img src="${img}" alt="Not img"</td>
+          <td><img src="${img}" width="100px" alt="Not img"</td>
           <td>${name}</td>
-          <td>0</td>
-          <td>${price}</td>
+          <td>${quantity}</td>
+          <td>${price * quantity}</td>
           <td>
-            <button class='btn btn-danger'><i class="fi-trash"></i></button>
+            <button class='btn btn-danger' onclick="deleteItem(${id})"><i class="fi-trash">Detele</i></button>
           </td>
         </tr>
       `;

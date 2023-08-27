@@ -57,18 +57,23 @@
             <nav class="navbar_contents">
               <li>
                 <a href="../../index.html"
-                  ><i class="fa fa-home">&nbsp;&nbsp;Home</i>
+                  ><i class="fa fa-home">
+                    <span>&nbsp;&nbsp;Home</span>
+                  </i>
                 </a>
               </li>
               <li>
                 <a href="../../admin/index.html"
-                  ><i class="fa fa-user-cog">&nbsp;&nbsp;Admin Portal</i></a
+                  ><i class="fa fa-user-cog">
+                    <span>&nbsp;&nbsp;Admin Portal</span>
+                  </i></a
                 >
               </li>
               <li>
                 <a href="#" onclick="showCart()"
                   ><i class="fa fa-shopping-cart"
-                    >&nbsp;<sup id="Th_Mua_hang">0</sup>&nbsp;&nbsp;Cart</i
+                    >&nbsp;<sup id="Th_Mua_hang">0</sup>
+                    <span>&nbsp;&nbsp;Cart</span></i
                   ></a
                 >
               </li>
@@ -280,13 +285,13 @@
           </table>
         </div>
         <div class="col-12 final">
-          <strong>Total: $ <span class="total">0</span></strong>
+          <strong>Total: $ <span id="total">0</span></strong>
           <div class="action">
-            <button class="btn btn-success">
+            <button class="btn btn-success" onclick="purchase()">
               Purchase
               <i class="fas fa-credit-card"></i>
             </button>
-            <button class="btn btn-danger">
+            <button class="btn btn-danger" onclick="clearCart()">
               Clear Cart
               <i class="fas fa-trash"></i>
             </button>

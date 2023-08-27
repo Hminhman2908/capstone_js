@@ -46,14 +46,6 @@ body #spinner {
 body #spinner .text-spinner {
   color: rgb(213, 142, 168);
 }
-body .col-6 {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-body .row {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
 
 header {
   position: fixed;
@@ -70,6 +62,11 @@ header .navbar_contents {
 }
 header .navbar_contents nav a {
   text-align: center;
+}
+@media screen and (max-width: 767px) {
+  header .navbar_contents span {
+    display: none;
+  }
 }
 
 .banner {
@@ -157,6 +154,11 @@ header .navbar_contents nav a {
   right: 20px;
   font-size: 15px;
   cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+  .contents .contents_right {
+    flex-direction: column;
+  }
 }
 .contents #contents-items {
   padding: 30px;

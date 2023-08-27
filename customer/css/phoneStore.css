@@ -4,6 +4,8 @@ body {
   line-height: 1.5;
   font-weight: 400;
   position: relative;
+  width: 100vw;
+  overflow-x: hidden;
 }
 body li {
   list-style: none;
@@ -64,8 +66,23 @@ header .navbar_contents nav a {
   text-align: center;
 }
 @media screen and (max-width: 767px) {
+  header .navbar_contents {
+    justify-content: flex-end;
+  }
+  header .navbar_contents li {
+    margin-left: 20px;
+  }
+  header .navbar_contents i {
+    font-size: 16px;
+  }
   header .navbar_contents span {
     display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .logo i {
+    font-size: 16px;
   }
 }
 
@@ -176,14 +193,31 @@ header .navbar_contents nav a {
   padding: 20px;
   border-bottom: 1px solid white;
 }
+#footer .footer__top p {
+  text-align: right;
+  margin-right: 20px;
+}
+@media screen and (max-width: 767px) {
+  #footer .footer__top p {
+    text-align: center;
+  }
+}
 #footer .footer__top ul {
   list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 20px;
   font-size: 18px;
   margin: 0;
+  margin-left: 30px;
+  padding: 0;
+}
+@media screen and (max-width: 767px) {
+  #footer .footer__top ul {
+    margin: 0;
+    justify-content: center;
+  }
 }
 #footer .footer__main {
   padding: 20px 0;
@@ -194,10 +228,11 @@ header .navbar_contents nav a {
 #footer .footer__main ul {
   list-style: none;
   text-align: left;
+  padding: 0;
 }
 #footer .footer__main ul h6 {
   font-weight: 700;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 #footer .footer__main ul h6 i {
   font-size: 25px;
@@ -214,7 +249,6 @@ header .navbar_contents nav a {
 #footer .footer__bottom {
   padding: 30px 0;
   background-color: rgba(0, 0, 0, 0.0549019608);
-  text-align: center;
 }
 #footer .footer__bottom a {
   font-weight: 700;
@@ -235,6 +269,17 @@ header .navbar_contents nav a {
   right: 10px;
   left: 50%;
   background: #e4e4e4;
+}
+@media screen and (max-width: 767px) {
+  #cart_show .side-nav {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  #cart_show .side-nav .cart-items {
+    overflow-x: auto;
+  }
 }
 #cart_show .side-nav h2 {
   text-align: left;

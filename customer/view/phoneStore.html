@@ -49,79 +49,84 @@
       <div class="container">
         <div class="row">
           <div class="col-6 col-sm-4">
-            <a class="logo" href="../../index.html"
-              ><i class="fa fa-robot">&nbsp;&nbsp;Cyber Phone</i></a
-            >
+            <a class="logo" href="../../index.html">
+              <i class="fa fa-robot"></i>
+              <span>&nbsp;&nbsp;Cyber Phone</span>
+            </a>
           </div>
           <div class="col-6 col-sm-8">
             <nav class="navbar_contents">
               <li>
                 <a href="../../index.html"
-                  ><i class="fa fa-home">
-                    <span>&nbsp;&nbsp;Home</span>
-                  </i>
+                  ><i class="fa fa-home"> </i>
+                  <span>&nbsp;&nbsp;Home</span>
                 </a>
               </li>
               <li>
                 <a href="../../admin/index.html"
-                  ><i class="fa fa-user-cog">
-                    <span>&nbsp;&nbsp;Admin Portal</span>
-                  </i></a
-                >
+                  ><i class="fa fa-user-cog"> </i>
+                  <span>&nbsp;&nbsp;Admin Portal</span>
+                </a>
               </li>
               <li>
                 <a href="#" onclick="showCart()"
                   ><i class="fa fa-shopping-cart"
                     >&nbsp;<sup id="Th_Mua_hang">0</sup>
-                    <span>&nbsp;&nbsp;Cart</span></i
-                  ></a
-                >
+                  </i>
+                  <span>&nbsp;&nbsp;Cart</span>
+                </a>
               </li>
             </nav>
           </div>
         </div>
       </div>
     </header>
-    <div class="banner">
-      <div id="carousel">
-        <div
-          class="bd-example animate__animated animate__backInLeft animate__delay-1s"
-        >
-          <div
-            id="carouselExampleCaptions"
-            class="carousel slide"
-            data-ride="carousel"
-          >
-            <ol class="carousel-indicators">
-              <li
-                data-target="#carouselExampleCaptions"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src="../../asset/img/bg_SAMSUNG.jpeg"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="../../asset/img/bg_IPHONE1.jpeg"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="../../asset/img/bg_IPHONE2.jpeg"
-                  class="d-block w-100"
-                  alt="..."
-                />
+    <div class="container">
+      <div class="banner">
+        <div id="carousel">
+          <div class="bd-example">
+            <div
+              id="carouselExampleCaptions"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleCaptions"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li
+                  data-target="#carouselExampleCaptions"
+                  data-slide-to="1"
+                ></li>
+                <li
+                  data-target="#carouselExampleCaptions"
+                  data-slide-to="2"
+                ></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="../../asset/img/bg_SAMSUNG.jpeg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="../../asset/img/bg_IPHONE1.jpeg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="../../asset/img/bg_IPHONE2.jpeg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -130,22 +135,18 @@
     </div>
     <div class="contents">
       <div class="contents_right mb-2">
-        <div
-          class="text-right animate__animated animate__backInLeft animate__delay-2s"
-        >
+        <div class="text-right">
           <select
             class="form-select formCheck"
             id="selectList"
             aria-label="Default select example"
           >
             <option value="all">All</option>
-            <option value="Apple">APPLE</option>
-            <option value="Samsung">SAMSUNG</option>
+            <option value="Apple">Apple</option>
+            <option value="Samsung">Samsung</option>
           </select>
         </div>
-        <div
-          class="form-search animate__animated animate__backInRight animate__delay-2s"
-        >
+        <div class="form-search">
           <form class="search">
             <input
               type="search"
@@ -153,10 +154,10 @@
               id="searchIP"
               placeholder="Search here..."
             />
-            <span
-              class="fa fa-search search_icon"
+            <button
+              class="btn fa fa-search search_icon"
               onclick="searchList()"
-            ></span>
+            ></button>
           </form>
         </div>
       </div>
@@ -302,6 +303,11 @@
         </div>
       </div>
     </div>
+    <div id="backTop">
+      <a href="#" class="cd-top text-replace js-cd-top"
+        ><i class="fa-solid fa-arrow-up"></i
+      ></a>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -326,6 +332,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- backTop -->
+    <script src="../../admin/js/BackToToputil.js"></script>
+    <script src="../../admin/js/BackToTopmain.js"></script>
     <!-- my js -->
     <script type="module" src="../../asset/js/main.js"></script>
   </body>

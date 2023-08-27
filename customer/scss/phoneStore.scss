@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size  : 18px;
+    font-size  : 16px;
     line-height: 1.5;
     font-weight: 400;
     position: relative;
@@ -66,9 +66,9 @@ body {
 }
 
 header {
-  position   : fixed;
+  position   : relative;
   width      : 100%;
-  background : rgba(21, 20, 20, 0.7);
+  background : #000;
   box-shadow : rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display    : flex;
   align-items: center;
@@ -149,23 +149,25 @@ header {
   margin: 50px 0;
     .contents_right {
         display        : flex;
-        justify-content: space-between;
+        justify-content: space-around;
         padding        : 0 20px;
 
         .formCheck {
-            padding      : 10px 50px 10px 20px;
-            width        : 235px;
+            padding: 5px;
+            width        : 100px;
             height       : 45px;
             font-size    : 16px;
-            color        : gray;
+            color        : #ad3f67;
             border       : none;
             font-weight  : 400;
             border-radius: 6px;
             background   : #fff;
             outline      : 0;
-            border       : 1px solid #b9b8b8;
+            border       : 1px solid #ad3f67;
             text-align   : left;
         }
+
+
 
         .form-search {
             display        : flex;
@@ -179,7 +181,7 @@ header {
                     padding      : 10px 50px 10px 20px;
                     height       : 45px;
                     font-size    : 16px;
-                    color        : gray;
+                    color        : #ad3f67;
                     border       : none;
                     font-weight  : 400;
                     border-radius: 6px;
@@ -187,21 +189,35 @@ header {
                     right        : 0;
                     background   : #fff;
                     outline      : 0;
-                    border       : 1px solid #b9b8b8;
+                    border       : 1px solid #ad3f67;
                 }
 
                 .search_icon {
-                    position : absolute;
-                    top      : 15px;
-                    right    : 20px;
-                    font-size: 15px;
-                    cursor   : pointer;
+                  background-color: #ad3f67;
+                  width: 50px;
+                  height: 45px;
+                  border-radius:0 6px 6px 0;
+                  position : absolute;
+                  top      : 0px;
+                  right    : 0px;
+                  font-size: 15px;
+                  color: #fff;
+                  cursor   : pointer;
                 }
+                @media screen and (max-width: 767px) {
+                  .search-input{
+                    width: 200px;
+                  }
+              }
             }
         }
 
         @media screen and (max-width: 767px) {
-          flex-direction: column;
+            flex-direction: column;
+            .formCheck{
+              width: 200px;
+              margin-bottom: 10px;
+            }
         }
     }
     #contents-items{
@@ -213,9 +229,11 @@ header {
   background: linear-gradient(to bottom, #491457, #9f4857);
   width: 100%;
   flex-shrink: 0;
+  font-size: 16px;
 
   a {
     text-decoration: underline;
+    font-size: 16px;
   }
 
   .footer__top {
@@ -225,6 +243,7 @@ header {
     p {
       text-align: right;
       margin-right: 20px;
+      transform: translateY(10px);
       
       @media screen and (max-width: 767px) {
         text-align: center;
@@ -287,14 +306,13 @@ header {
   .footer__bottom {
     padding: 30px 0;
     background-color: #0000000e;
+    text-align: center;
 
     a {
       font-weight: 700;
     }
   }
 }
-
-
 
 #cart_show {
   position: fixed;
@@ -344,5 +362,40 @@ header {
         }
       }
     }
+  }
+}
+
+#backTop {
+  .cd-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #ad3f67;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+    text-align: center;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    i {
+      line-height: 40px;
+      padding: 0;
+      font-size: 1rem;
+    }
+  }
+
+  .cd-top--is-visible {
+    visibility: visible;
+    opacity: 0.5;
+  }
+
+  .cd-top--fade-out {
+    opacity: .2;
   }
 }

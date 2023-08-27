@@ -58,6 +58,7 @@ window.searchList = () => {
   })
     .then((res) => {
       list = res.data;
+      console.log("🚀 ~ file: main.js:61 ~ .then ~ list:", list);
       let objSearch = list.filter((item) =>
         item.name.toLowerCase().includes(nameSearch.toLowerCase())
       );

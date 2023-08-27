@@ -52,13 +52,15 @@ export let renderHTML = (list) => {
       item;
     let contentTr = `
       <div class="col-12 col-sm-6 col-md-4 col-xl-3 pb-4">
-        <div class="card animate__animated animate__backInLeft animate__delay-1s">
-          <img class="card-img-top" src="${img}" alt="${name}">
+        <div class="card" style="border-radius:20px">
+          <div class="container">
+            <img class="card-img-top" src="${img}" alt="${name}">
+          </div>
           <div class="card-body">
-            <h6 class="card-title text-center text-danger">${name}</h6>
+            <h6 class="card-title text-center text-dark">${name}</h6>
             <p class="card-text text-danger text-center">${price}<sup><u>$</u></sup></p>
           </div>
-          <div class="text-right p-2">
+          <div class="text-center p-2">
               <button class="btn btn-danger" onclick="addCart(${id})">
                   <i class="fa fa-shopping-cart text-white" aria-hidden="true"></i>
               </button>

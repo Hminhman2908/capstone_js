@@ -3,6 +3,7 @@ body {
   font-size: 18px;
   line-height: 1.5;
   font-weight: 400;
+  position: relative;
 }
 body li {
   list-style: none;
@@ -36,56 +37,55 @@ body #spinner {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(89, 87, 87, 0.5);
+  background: gray;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
 }
 body #spinner .text-spinner {
   color: rgb(213, 142, 168);
 }
-body .col-6 {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-body .row {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-body header {
+
+header {
   position: fixed;
   width: 100%;
   background: rgba(21, 20, 20, 0.7);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   align-items: center;
-  z-index: 999;
+  z-index: 1;
 }
-body header .navbar_contents {
+header .navbar_contents {
   display: flex;
   justify-content: space-between;
 }
-body header .navbar_contents nav a {
+header .navbar_contents nav a {
   text-align: center;
 }
-body .banner {
+@media screen and (max-width: 767px) {
+  header .navbar_contents span {
+    display: none;
+  }
+}
+
+.banner {
   position: relative;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 }
-body .banner #carousel .carousel-indicators li {
+.banner #carousel .carousel-indicators li {
   width: 13px;
   height: 13px;
   border-radius: 50%;
   border: none;
 }
-body .banner #carousel .carousel-indicators .active {
+.banner #carousel .carousel-indicators .active {
   background-color: rgb(218, 186, 198);
 }
-body .banner .carousel-item::before {
+.banner .carousel-item::before {
   content: "";
   position: absolute;
   top: 0;
@@ -96,23 +96,24 @@ body .banner .carousel-item::before {
   height: 100%;
   background-color: rgba(251, 231, 239, 0.3);
 }
-body .banner .carousel-item::before #carousel .carousel-indicators .active {
+.banner .carousel-item::before #carousel .carousel-indicators .active {
   background-color: rgb(218, 186, 198);
 }
-body .banner .carousel-item::before .carousel-item img {
+.banner .carousel-item::before .carousel-item img {
   height: 600px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-body .section-inner {
-  margin-bottom: 20px;
+
+.contents {
+  margin: 50px 0;
 }
-body .contents .contents_right {
+.contents .contents_right {
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
 }
-body .contents .contents_right .formCheck {
+.contents .contents_right .formCheck {
   padding: 10px 50px 10px 20px;
   width: 235px;
   height: 45px;
@@ -126,12 +127,12 @@ body .contents .contents_right .formCheck {
   border: 1px solid #b9b8b8;
   text-align: left;
 }
-body .contents .contents_right .form-search {
+.contents .contents_right .form-search {
   display: flex;
   justify-content: end;
   position: relative;
 }
-body .contents .contents_right .form-search .search .search-input {
+.contents .contents_right .form-search .search .search-input {
   display: flex;
   flex: 1;
   padding: 10px 50px 10px 20px;
@@ -147,26 +148,35 @@ body .contents .contents_right .form-search .search .search-input {
   outline: 0;
   border: 1px solid #b9b8b8;
 }
-body .contents .contents_right .form-search .search .search_icon {
+.contents .contents_right .form-search .search .search_icon {
   position: absolute;
   top: 15px;
   right: 20px;
   font-size: 15px;
   cursor: pointer;
 }
-body #footer {
+@media screen and (max-width: 767px) {
+  .contents .contents_right {
+    flex-direction: column;
+  }
+}
+.contents #contents-items {
+  padding: 30px;
+}
+
+#footer {
   background: linear-gradient(to bottom, #491457, #9f4857);
   width: 100%;
   flex-shrink: 0;
 }
-body #footer a {
+#footer a {
   text-decoration: underline;
 }
-body #footer .footer__top {
+#footer .footer__top {
   padding: 20px;
   border-bottom: 1px solid white;
 }
-body #footer .footer__top ul {
+#footer .footer__top ul {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -175,37 +185,74 @@ body #footer .footer__top ul {
   font-size: 18px;
   margin: 0;
 }
-body #footer .footer__main {
+#footer .footer__main {
   padding: 20px 0;
 }
-body #footer .footer__main i {
+#footer .footer__main i {
   padding-right: 20px;
 }
-body #footer .footer__main ul {
+#footer .footer__main ul {
   list-style: none;
   text-align: left;
 }
-body #footer .footer__main ul h6 {
+#footer .footer__main ul h6 {
   font-weight: 700;
   padding: 20px 0;
 }
-body #footer .footer__main ul h6 i {
+#footer .footer__main ul h6 i {
   font-size: 25px;
 }
-body #footer .footer__main ul p {
+#footer .footer__main ul p {
   line-height: 1.5;
 }
-body #footer .footer__main ul li {
+#footer .footer__main ul li {
   line-height: 2;
 }
-body #footer .footer__main ul.contact a {
+#footer .footer__main ul.contact a {
   text-decoration: none;
 }
-body #footer .footer__bottom {
+#footer .footer__bottom {
   padding: 30px 0;
   background-color: rgba(0, 0, 0, 0.0549019608);
   text-align: center;
 }
-body #footer .footer__bottom a {
+#footer .footer__bottom a {
   font-weight: 700;
+}
+
+#cart_show {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  display: none;
+}
+#cart_show .side-nav {
+  position: absolute;
+  right: 10px;
+  left: 50%;
+  background: #e4e4e4;
+}
+#cart_show .side-nav h2 {
+  text-align: left;
+}
+#cart_show .side-nav #btnCart {
+  border: none;
+  background: none;
+  outline: none;
+  color: rgb(187, 119, 119);
+  cursor: pointer;
+  transition: 0.5s;
+}
+#cart_show .side-nav #btnCart i {
+  font-size: 35px;
+}
+#cart_show .side-nav .final {
+  text-align: right;
+}
+#cart_show .side-nav .final .action button {
+  margin: 10px;
 }/*# sourceMappingURL=phoneStore.css.map */

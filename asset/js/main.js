@@ -24,7 +24,7 @@ window.outCart = () => {
   document.getElementById("cart_show").style.display = "none";
 };
 
-// Loại
+// Sort
 document.getElementById("selectList").addEventListener("change", function () {
   var list = [];
   axios({
@@ -71,25 +71,17 @@ window.searchList = () => {
 
 // Cart
 window.addCart = (id) => {
-  console.log("🚀 ~ file: main.js:69 ~ id:", id);
-
-  console.log(window.localStorage.getItem("listCart"));
   var listCart = JSON.parse(window.localStorage.getItem("listCart"));
   var list = listCart || [];
   axios({
     url: `${URL}/${id}`,
-    // url: URL,
     method: "GET",
   })
     .then((res) => {
-      console.log("list: ", list);
       list.push(res.data);
       document.getElementById("Th_Mua_hang").innerText = list.length;
       document.getElementById("Th_Mua_hang").style.color = "red";
-      console.log(list.length);
-      console.log(list);
       window.localStorage.setItem("listCart", JSON.stringify(list));
-      // renderItemCart(list);
     })
     .catch((err) => {
       console.log(err);

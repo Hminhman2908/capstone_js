@@ -114,6 +114,10 @@ header {
   bottom  : 0;
   margin-top: 80px;
 
+  #carousel .carousel-indicators{
+    opacity: 0.1;
+  }
+  
   #carousel .carousel-indicators li {
       width        : 13px;
       height       : 13px;
@@ -122,7 +126,7 @@ header {
   }
 
   #carousel .carousel-indicators .active {
-      background-color: rgb(218, 186, 198);
+      background-color: rgb(235, 10, 93);
   }
 
   .carousel-item::before {
@@ -331,6 +335,14 @@ header {
     right: 10px;
     left: 50%;
     background: #e4e4e4;
+    .table .table__name{
+      background-color: #ad3f67;
+      span, i {
+        color: #fff;
+        font-size: 20px;
+      }
+      
+    }
 
     @media screen and (max-width: 767px) {
       top: 0;
@@ -341,6 +353,7 @@ header {
       .cart-items {
         overflow-x: auto;
       }
+
     }
 
     h2{

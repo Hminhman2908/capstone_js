@@ -102,16 +102,34 @@ export let renderItemCart = (list) => {
       quantity,
     } = item;
     createTr += `
-        <tr>
-          <td><img src="${img}" width="100px" alt="Not img"</td>
-          <td>${name}</td>
-          <td>${quantity}</td>
-          <td>${price * quantity}</td>
-          <td>
-            <button class='btn btn-danger' onclick="deleteItem(${id})"><i class="fi-trash">Detele</i></button>
-          </td>
-        </tr>
+    <tr class="item-row">
+        <th class="item-id" scope="row">${id}</th>
+        <td class="item-img">
+          <img src="${img}" alt="" style="width:100px">
+        </td>
+        <td class="item-name">${name}</td>
+        <td class="item-quantity">
+          <div class="buttons_added">
+            <input class="minus is-form" type="button" value="-">
+            <input aria-label="quantity" class="input-qty" max="20" min="1" name="" type="number" value="">
+            <input class="plus is-form" type="button" value="+">
+          </div>
+        </td>
+        <td class="item-price">${price * quantity}$</td>
+        <td class="item-actions">
+            <button class="btn btn-outline-danger del" onclick="deleteItem(${id})"><i class="fa-solid fa-trash"></i>Delete</button>
+        </td>
+    </tr>
       `;
   });
-  document.getElementById("tbodyItem").innerHTML = createTr;
+  document.getElementById("data-table").innerHTML = createTr;
 };
+
+{
+  /* <td class="item-actions2" onclick="toggleRowActive(this)">
+  <button class="btn btn-outline-purple show-detail">
+    <i class="fa-solid fa-caret-down"></i>
+    <i class="fa-solid fa-caret-up"></i>
+  </button>
+</td>; */
+}

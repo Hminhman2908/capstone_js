@@ -35,6 +35,57 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <!-- Quantity -->
+    <style>
+      .buttons_added {
+        opacity: 1;
+        display: inline-block;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        white-space: nowrap;
+        vertical-align: top;
+      }
+      .is-form {
+        overflow: hidden;
+        position: relative;
+        background-color: #f9f9f9;
+        height: 2.2rem;
+        width: 1.9rem;
+        padding: 0;
+        text-shadow: 1px 1px 1px #fff;
+        border: 1px solid #ddd;
+      }
+      .is-form:focus,
+      .input-text:focus {
+        outline: none;
+      }
+      .is-form.minus {
+        border-radius: 4px 0 0 4px;
+      }
+      .is-form.plus {
+        border-radius: 0 4px 4px 0;
+      }
+      .input-qty {
+        background-color: #fff;
+        width: 40px;
+        height: 2.2rem;
+        text-align: center;
+        font-size: 1rem;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        border-left: 0;
+        border-right: 0;
+        padding: 0;
+      }
+      .input-qty::-webkit-outer-spin-button,
+      .input-qty::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    </style>
     <!-- CSS PhoneStore -->
     <link rel="stylesheet" href="../css/phoneStore.css" />
   </head>
@@ -261,7 +312,7 @@
       </div>
     </footer>
     <div id="cart_show">
-      <div class="side-nav" style="right: 0px">
+      <!-- <div class="side-nav" style="right: 0px">
         <div class="row">
           <h2 class="col-8">
             <i class="fa fa-shopping-cart">&nbsp;&nbsp;Cart</i>
@@ -286,6 +337,55 @@
               </tr>
             </thead>
             <tbody id="tbodyItem"></tbody>
+          </table>
+        </div>
+        <div class="col-12 final">
+          <strong>Total: $ <span id="total">0</span></strong>
+          <div class="action">
+            <button class="btn btn-success" onclick="purchase()">
+              Purchase
+              <i class="fas fa-credit-card"></i>
+            </button>
+            <button class="btn btn-danger" onclick="clearCart()">
+              Clear Cart
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div> -->
+      <div class="side-nav" style="right: 0px">
+        <div class="container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="6" class="table__name">
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <span><i class="fa fa-shopping-cart"></i>&nbsp;Cart</span>
+                    <button
+                      class="btn btn-danger"
+                      onclick="outCart()"
+                      data-toggle="modal"
+                      data-target="#myModal"
+                    >
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </th>
+              </tr>
+              <tr class="table-header">
+                <th class="item-th" scope="row">#</th>
+                <th class="" scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th class="item-th" scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th class="item-th" scope="col">
+                  <i class="fa-solid fa-gear"></i>Action
+                </th>
+              </tr>
+            </thead>
+            <tbody id="data-table"></tbody>
           </table>
         </div>
         <div class="col-12 final">
@@ -335,6 +435,43 @@
     <!-- backTop -->
     <script src="../../admin/js/BackToToputil.js"></script>
     <script src="../../admin/js/BackToTopmain.js"></script>
+    <!-- quantity -->
+    <script>
+      $("input.input-qty").each(function () {
+        var $this = $(this),
+          qty = $this.parent().find(".is-form"),
+          min = Number($this.attr("min")),
+          max = Number($this.attr("max"));
+        if (min == 0) {
+          var d = 0;
+        } else d = min;
+        $(qty).on("click", function () {
+          if ($(this).hasClass("minus")) {
+            if (d > min) d += -1;
+          } else if ($(this).hasClass("plus")) {
+            var x = Number($this.val()) + 1;
+            if (x <= max) d += 1;
+          }
+          $this.attr("value", d).val(d);
+        });
+      });
+      // function minus() {
+      //   console.log("y");
+      //   let a = document.getElementById("input-qty1").value * 1;
+      //   let kq = a - 1;
+      //   if (kq == 0) {
+      //     var d = 0;
+      //     document.getElementById("input-qty1").value = d;
+      //   }
+      //   return (document.getElementById("input-qty1").value = kq);
+      // }
+      // function plus() {
+      //   console.log("n");
+      //   let b = document.getElementById("input-qty1").value * 1;
+      //   let kq = b + 1;
+      //   return (document.getElementById("input-qty1").value = kq);
+      // }
+    </script>
     <!-- my js -->
     <script type="module" src="../../asset/js/main.js"></script>
   </body>

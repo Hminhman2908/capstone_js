@@ -95,6 +95,9 @@ header .navbar_contents nav a {
   bottom: 0;
   margin-top: 80px;
 }
+.banner #carousel .carousel-indicators {
+  opacity: 0.1;
+}
 .banner #carousel .carousel-indicators li {
   width: 13px;
   height: 13px;
@@ -102,7 +105,7 @@ header .navbar_contents nav a {
   border: none;
 }
 .banner #carousel .carousel-indicators .active {
-  background-color: rgb(218, 186, 198);
+  background-color: rgb(235, 10, 93);
 }
 .banner .carousel-item::before {
   content: "";
@@ -290,6 +293,13 @@ header .navbar_contents nav a {
   right: 10px;
   left: 50%;
   background: #e4e4e4;
+}
+#cart_show .side-nav .table .table__name {
+  background-color: #ad3f67;
+}
+#cart_show .side-nav .table .table__name span, #cart_show .side-nav .table .table__name i {
+  color: #fff;
+  font-size: 20px;
 }
 @media screen and (max-width: 767px) {
   #cart_show .side-nav {

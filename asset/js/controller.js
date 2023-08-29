@@ -23,22 +23,19 @@ export function turnSpinner() {
   document.getElementById("spinner").style.display = "flex";
 }
 
-export function totalPrice() {
-  const listCart = window.localStorage.getItem("listCart");
-  const totalItemInCart = listCart ? JSON.parse(listCart) : [];
-  const totalPrice = totalItemInCart.reduce(
-    (prev, curr) => prev + curr.price,
+export function totalPrice(listCart) {
+  const totalPrice = (listCart || []).reduce(
+    (prev, curr) => prev + curr.price * curr.quantity,
     0
   );
-
   document.getElementById("total").innerText = totalPrice;
 }
 
 export function renderTotalItemCart() {
-  const listCart = window.localStorage.getItem("listCart");
+  const listCart = getListCartInLocal();
 
-  const totalItemInCart = listCart ? JSON.parse(listCart).length : 0;
-  document.getElementById("Th_Mua_hang").innerText = totalItemInCart;
+  const quantity = listCart.length || 0;
+  updateQuantityCartInHeader(quantity);
 }
 
 export function offSpinner() {
@@ -75,18 +72,8 @@ export let renderHTML = (list) => {
 };
 
 export let renderItemCart = (list) => {
-  let listCart = [];
+  const listCart = list || [];
   let createTr = "";
-
-  list.forEach((element) => {
-    const itemInCart = listCart.find((e) => e.id === element.id);
-    if (itemInCart) {
-      itemInCart.quantity += 1;
-    } else {
-      element.quantity = 1;
-      listCart.push(element);
-    }
-  });
 
   listCart.forEach((item, index) => {
     let {
@@ -140,3 +127,35 @@ export let renderItemCart = (list) => {
   });
   document.getElementById("data-table").innerHTML = createTr;
 };
+
+export function checkItemCart(listCart, item) {
+  let newListCart = [...listCart];
+  const indexOf = listCart.findIndex((element) => element.id === item.id);
+
+  if (indexOf > -1) {
+    newListCart[indexOf].quantity += 1;
+  } else {
+    const newItem = {
+      ...item,
+      quantity: 1,
+    };
+    newListCart.push(newItem);
+  }
+
+  return newListCart;
+}
+
+export function updateQuantityCartInHeader(quantity) {
+  document.getElementById("Th_Mua_hang").innerText = quantity;
+  document.getElementById("Th_Mua_hang").style.color = "red";
+}
+
+export function getListCartInLocal() {
+  const listCart = window.localStorage.getItem("listCart");
+  return listCart ? JSON.parse(listCart) : [];
+}
+
+export function setListCartInLocal(listCart) {
+  window.localStorage.setItem("listCart", JSON.stringify(listCart));
+  return;
+}

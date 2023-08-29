@@ -8,6 +8,10 @@ import {
   turnSpinner,
   renderTotalItemCart,
   totalPrice,
+  checkItemCart,
+  updateQuantityCartInHeader,
+  getListCartInLocal,
+  setListCartInLocal,
 } from "./controller.js";
 
 const APPLE = "Apple";
@@ -16,9 +20,10 @@ const SAMSUNG = "Samsung";
 fetchProduct();
 
 window.showCart = () => {
+  const listCart = getListCartInLocal();
   document.getElementById("cart_show").style.display = "flex";
-  renderItemCart(JSON.parse(window.localStorage.getItem("listCart")) || []);
-  totalPrice();
+  renderItemCart(listCart);
+  totalPrice(listCart);
 };
 
 window.outCart = () => {
@@ -79,17 +84,15 @@ window.searchList = () => {
 
 // Cart
 window.addCart = (id) => {
-  var listCart = JSON.parse(window.localStorage.getItem("listCart"));
-  var list = listCart || [];
+  const listCart = getListCartInLocal();
   axios({
     url: `${URL}/${id}`,
     method: "GET",
   })
     .then((res) => {
-      list.push(res.data);
-      document.getElementById("Th_Mua_hang").innerText = list.length;
-      document.getElementById("Th_Mua_hang").style.color = "red";
-      window.localStorage.setItem("listCart", JSON.stringify(list));
+      const newListCart = checkItemCart(listCart, res.data);
+      updateQuantityCartInHeader(newListCart.length);
+      setListCartInLocal(newListCart);
     })
     .catch((err) => {
       console.log(err);
@@ -97,45 +100,42 @@ window.addCart = (id) => {
 };
 
 window.deleteItem = (id) => {
-  var listCart = JSON.parse(window.localStorage.getItem("listCart"));
+  const listCart = getListCartInLocal();
 
-  var newListCart = listCart.filter((element) => element.id !== String(id));
-  window.localStorage.setItem("listCart", JSON.stringify(newListCart));
+  const newListCart = listCart.filter((element) => element.id !== String(id));
+  setListCartInLocal(newListCart);
   renderItemCart(newListCart);
   renderTotalItemCart();
-  totalPrice();
+  totalPrice(newListCart);
 };
 
 window.clearCart = () => {
   window.localStorage.removeItem("listCart");
   renderItemCart([]);
   renderTotalItemCart();
-  totalPrice();
+  totalPrice([]);
 };
 
 window.purchase = () => {
   window.clearCart();
   window.outCart();
-  totalPrice();
+  totalPrice([]);
   // alert("Mua hàng thành công !");
 };
 
-window.soLuong = (id, sl) => {
-  let tr = sl.parentNode.parentNode.parentNode;
-  // console.log("🚀 ~ file: main.js:125 ~ tr:", tr.children[4]);
-  let soLuong = sl.value;
-  axios({
-    url: `${URL}/${id}`,
-    method: "GET",
-  })
-    .then((res) => {
-      let newPrice = Number(soLuong) * Number(res.data.price);
-      tr.children[4].innerHTML = `${newPrice}$`;
-    })
-    .catch((err) => {
-      console.log("🚀 ~ file: main.js:126 ~ err:", err);
-    });
+window.soLuong = (id, inputElement) => {
+  const listCart = getListCartInLocal();
+  const indexOf = listCart.findIndex((element) => Number(element.id) === id);
+  const value = inputElement.value;
+
+  if (indexOf > -1) {
+    listCart[indexOf].quantity = Number(value);
+    setListCartInLocal(listCart);
+    renderItemCart(listCart);
+    totalPrice(listCart);
+  }
 };
+
 window.toggleRowActive = (button) => {
   const itemRow = button.closest(".item-row");
   const isActive = itemRow.classList.contains("active");

@@ -1,3 +1,4 @@
+import { checkSearch } from "../../admin/js/validate.js";
 import {
   URL,
   fetchProduct,
@@ -16,7 +17,7 @@ fetchProduct();
 
 window.showCart = () => {
   document.getElementById("cart_show").style.display = "flex";
-  renderItemCart(JSON.parse(window.localStorage.getItem("listCart")));
+  renderItemCart(JSON.parse(window.localStorage.getItem("listCart")) || []);
   totalPrice();
 };
 
@@ -51,7 +52,9 @@ document.getElementById("selectList").addEventListener("change", function () {
 // Search
 window.searchList = () => {
   var list = [];
-  let nameSearch = document.getElementById("searchIP").value;
+  let nameSearch = document.getElementById("searchIP").value.trim();
+  var isValid = checkSearch(nameSearch);
+  if (!isValid) return;
   axios({
     url: URL,
     method: "GET",
@@ -63,9 +66,14 @@ window.searchList = () => {
         item.name.toLowerCase().includes(nameSearch.toLowerCase())
       );
       renderHTML(objSearch);
+      document.getElementById(
+        "search-alert"
+      ).innerHTML = `There are ${objSearch.length} results match your search.`;
+      document.getElementById("search-alert").classList.remove("d-none");
     })
     .catch((err) => {
       console.log("🚀 ~ file: main.js:62 ~ err:", err);
+      turnSpinner();
     });
 };
 
@@ -87,6 +95,7 @@ window.addCart = (id) => {
       console.log(err);
     });
 };
+
 window.deleteItem = (id) => {
   var listCart = JSON.parse(window.localStorage.getItem("listCart"));
 
@@ -108,5 +117,33 @@ window.purchase = () => {
   window.clearCart();
   window.outCart();
   totalPrice();
-  alert("Mua hàng thành công !");
+  // alert("Mua hàng thành công !");
+};
+
+window.soLuong = (id, sl) => {
+  let tr = sl.parentNode.parentNode.parentNode;
+  // console.log("🚀 ~ file: main.js:125 ~ tr:", tr.children[4]);
+  let soLuong = sl.value;
+  axios({
+    url: `${URL}/${id}`,
+    method: "GET",
+  })
+    .then((res) => {
+      let newPrice = Number(soLuong) * Number(res.data.price);
+      tr.children[4].innerHTML = `${newPrice}$`;
+    })
+    .catch((err) => {
+      console.log("🚀 ~ file: main.js:126 ~ err:", err);
+    });
+};
+window.toggleRowActive = (button) => {
+  const itemRow = button.closest(".item-row");
+  const isActive = itemRow.classList.contains("active");
+
+  const allItemRows = document.querySelectorAll(".item-row");
+  allItemRows.forEach((row) => row.classList.remove("active"));
+
+  if (!isActive) {
+    itemRow.classList.add("active");
+  }
 };

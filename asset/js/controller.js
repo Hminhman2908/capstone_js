@@ -109,27 +109,34 @@ export let renderItemCart = (list) => {
         </td>
         <td class="item-name">${name}</td>
         <td class="item-quantity">
-          <div class="buttons_added">
-            <input class="minus is-form" type="button" value="-">
-            <input aria-label="quantity" class="input-qty" max="20" min="1" name="" type="number" value="">
-            <input class="plus is-form" type="button" value="+">
+          <style>
+            #buy-amount {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+            }
+            #buy-amount #amount {
+              width: 100px;
+              text-align: center;
+              border: 1px solid #ececec;
+            }
+          </style>
+          <div id="buy-amount" class="item-minusPlus">
+            <input onchange="soLuong(${id},this)" type="number" min="1" max="10" name="amount" id="amount" value="${quantity}">
           </div>
         </td>
-        <td class="item-price">${price * quantity}$</td>
+        <td class="item-price">${quantity * price}$</td>
         <td class="item-actions">
             <button class="btn btn-outline-danger del" onclick="deleteItem(${id})"><i class="fa-solid fa-trash"></i>Delete</button>
+        </td>
+        <td class="item-actions2" onclick="toggleRowActive(this)">
+            <button class="btn btn-outline-purple show-detail">
+              <i class="fa-solid fa-caret-down"></i>
+              <i class="fa-solid fa-caret-up"></i>
+            </button>
         </td>
     </tr>
       `;
   });
   document.getElementById("data-table").innerHTML = createTr;
 };
-
-{
-  /* <td class="item-actions2" onclick="toggleRowActive(this)">
-  <button class="btn btn-outline-purple show-detail">
-    <i class="fa-solid fa-caret-down"></i>
-    <i class="fa-solid fa-caret-up"></i>
-  </button>
-</td>; */
-}

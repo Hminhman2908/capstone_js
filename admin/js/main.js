@@ -1,4 +1,11 @@
-import { getFormInfo, renderList, showFormInfo, showSpinner, hideSpinner, setActiveButton } from "./controller.js";
+import {
+  getFormInfo,
+  renderList,
+  showFormInfo,
+  showSpinner,
+  hideSpinner,
+  setActiveButton,
+} from "./controller.js";
 import { checkAllInPut, checkSearch, hideAlert } from "./validate.js";
 // https://64e380ccbac46e480e78e305.mockapi.io/product
 let url = "https://64e380ccbac46e480e78e305.mockapi.io/product";
@@ -19,7 +26,7 @@ window.addData = () => {
   var isValid = checkAllInPut(item);
   console.log("isValid: ", isValid);
   if (!isValid) return;
-  $('#myModal').modal('hide');
+  $("#myModal").modal("hide");
   showSpinner();
   axios
     .post(url, item)
@@ -47,7 +54,7 @@ window.delData = (id) => {
 };
 window.editData = (id) => {
   showSpinner();
-  $('#myModal').modal('show');
+  $("#myModal").modal("show");
   document.getElementById("addBtn").classList.add("d-none");
   document.getElementById("updateBtn").classList.remove("d-none");
   axios
@@ -62,11 +69,10 @@ window.editData = (id) => {
     });
 };
 window.updateData = () => {
-
   var item = getFormInfo();
   var isValid = checkAllInPut(item);
   if (!isValid) return;
-  $('#myModal').modal('hide')
+  $("#myModal").modal("hide");
   showSpinner();
   axios
     .put(`${url}/${item.id}`, item)
@@ -89,7 +95,7 @@ window.showNewData = () => {
   document.getElementById("itemImg").value = "";
   document.getElementById("itemDesc").value = "";
   hideSpinner();
-}
+};
 window.searchValue = () => {
   var search = document.getElementById("searchValue").value.trim();
   var isValid = checkSearch(search);
@@ -98,9 +104,11 @@ window.searchValue = () => {
   axios
     .get(url)
     .then(function (res) {
-      list = res.data.filter(item => item.name.match(search));
+      list = res.data.filter((item) => item.name.match(search));
       renderList(list);
-      document.getElementById("search-alert").innerHTML = `There are ${list.length} results match your search.`
+      document.getElementById(
+        "search-alert"
+      ).innerHTML = `There are ${list.length} results match your search.`;
       document.getElementById("search-alert").classList.remove("d-none");
       hideSpinner();
     })
@@ -118,7 +126,6 @@ window.sortLowtoHigh = () => {
       list.sort((a, b) => a.price - b.price);
       renderList(list);
       setActiveButton("lowToHighButton");
-      location.reload();
       hideSpinner();
     })
     .catch(function (err) {
@@ -132,10 +139,9 @@ window.sortHightoLow = () => {
     .get(url)
     .then(function (res) {
       list = res.data;
-      list.sort((a, b) => b.price - a.price);  // Sort by the 'price' property
+      list.sort((a, b) => b.price - a.price); // Sort by the 'price' property
       renderList(list);
       setActiveButton("highToLowButton");
-      location.reload();
       hideSpinner();
     })
     .catch(function (err) {
@@ -148,15 +154,15 @@ window.clearModalAlert = () => {
   hideAlert("alertPrice");
   hideAlert("alertImg");
   hideAlert("alertDesc");
-}
+};
 window.toggleRowActive = (button) => {
-  const itemRow = button.closest('.item-row');
-  const isActive = itemRow.classList.contains('active');
+  const itemRow = button.closest(".item-row");
+  const isActive = itemRow.classList.contains("active");
 
-  const allItemRows = document.querySelectorAll('.item-row');
-  allItemRows.forEach(row => row.classList.remove('active'));
+  const allItemRows = document.querySelectorAll(".item-row");
+  allItemRows.forEach((row) => row.classList.remove("active"));
 
   if (!isActive) {
-    itemRow.classList.add('active');
+    itemRow.classList.add("active");
   }
-}
+};
